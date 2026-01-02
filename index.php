@@ -1,28 +1,22 @@
 <?php
 $name = 'Pepijn';
 $role = 'CS Student';
-$bio = "I build web applications using PHP, JavaScript and modern web tools. I enjoy learning new technologies and working on open-source projects.";
+$bio = "I build (web) applications using Java, C, PHP, JavaScript and modern web tools. I enjoy learning new technologies and working on open-source projects.";
 $email = 'contact@nyxz.nl';
 $projects = [
     [
         'title' => 'VideoAnalysis',
         'description' => 'A JavaFX-based desktop application for analyzing and annotating video files with support for event tracking, multi-video playback, and advanced navigation features.',
-        'link' => 'https://videoanalysis.nyxz.nl/',
-        'github' => 'https://github.com/Pepijn-DB/VideoAnalysis',
+        'link' => 'https://videoanalysis.axyvon.com/',
             'skills' => [
                     'Java',
                     'JavaFX'
             ]
     ],
     [
-        'title' => 'Project Two',
-        'description' => 'A short description of project two. Includes unit tests and CI.',
-        'link' => '#'
-    ],
-    [
         'title' => 'LocationWebSocket',
         'description' => 'A small Java plugin for Minecraft that sends location data to a WebSocket server.',
-        'link' => '#',
+        'link' => '',
         'github' => 'https://github.com/Pepijn-DB/LocationWebSocket',
         'skills' => [
                 'Java',
@@ -63,7 +57,7 @@ $skills = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?=$name?> — Portfolio</title>
+    <title><?=$name?> - Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -87,7 +81,7 @@ $skills = [
 
     <section id="about" class="about">
         <h3>About</h3>
-        <p>Hi — I'm <?=$name?>. I create clean, performant and accessible web experiences. I like to solve problems and collaborate on projects that make people's lives easier.</p>
+        <p>Hi - I'm <?=$name?>. I create clean, performant and accessible experiences. I like to solve problems and collaborate on projects that make people's lives easier.</p>
     </section>
 
     <section id="projects" class="projects">
@@ -97,7 +91,9 @@ $skills = [
                 <article class="project-card">
                     <h4><?= htmlspecialchars($p['title']) ?></h4>
                     <p><?= htmlspecialchars($p['description']) ?></p>
-                    <p><a class="btn" href="<?= htmlspecialchars($p['link']) ?>">View</a></p>
+                    <?php if (!empty($p['link'])): ?>
+                        <p><a class="btn" href="<?= htmlspecialchars($p['link']) ?>">View</a></p>
+                    <?php endif; ?>
                     <?php if (!empty($p['github'])): ?>
                         <p>
                             <a class="btn" href="<?= htmlspecialchars($p['github']) ?>" target="_blank" rel="noopener noreferrer">
