@@ -1,7 +1,7 @@
 <?php
 $name = 'Pepijn';
 $role = 'CS Student';
-$bio = "I build (web) applications using Java, C, PHP, JavaScript and modern web tools. I enjoy learning new technologies and working on open-source projects.";
+$bio = "I build (web) applications using Java, PHP, JavaScript and modern web tools. I enjoy learning new technologies and working on open-source projects.";
 $email = 'contact@nyxz.nl';
 $projects = [
     [
@@ -30,22 +30,22 @@ $skills = [
                 'title' => 'Java'
         ],
         [
-                'title' => 'C'
+                'title' => 'PHP'
         ],
         [
-                'title' => 'C#'
+                'title' => 'SQL'
+        ],
+        [
+                'title' => 'PostgreSQL'
         ],
         [
                 'title' => 'C++'
         ],
         [
-                'title' => 'PHP'
-        ],
-        [
                 'title' => 'JavaScript'
         ],
         [
-                'title' => 'SQL'
+                'title' => 'HTML'
         ],
         [
                 'title' => 'Git'
@@ -69,6 +69,32 @@ $skills = [
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
+            <!-- Theme toggle button (subtle) -->
+            <a id="theme-toggle" class="btn" aria-pressed="false" aria-label="Toggle color theme">
+                <span class="theme-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                        <!-- Sun group -->
+                        <g class="sun">
+                            <circle cx="12" cy="12" r="4" fill="currentColor" />
+                            <g stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+                                <line x1="12" y1="1" x2="12" y2="3" />
+                                <line x1="12" y1="21" x2="12" y2="23" />
+                                <line x1="4.2" y1="4.2" x2="5.8" y2="5.8" />
+                                <line x1="18.2" y1="18.2" x2="19.8" y2="19.8" />
+                                <line x1="1" y1="12" x2="3" y2="12" />
+                                <line x1="21" y1="12" x2="23" y2="12" />
+                                <line x1="4.2" y1="19.8" x2="5.8" y2="18.2" />
+                                <line x1="18.2" y1="5.8" x2="19.8" y2="4.2" />
+                            </g>
+                        </g>
+                        <!-- Moon group -->
+                        <g class="moon" transform="translate(0,0)">
+                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"/>
+                        </g>
+                    </svg>
+                </span>
+                <span class="sr-only" id="theme-toggle-label">Toggle theme</span>
+            </a>
         </nav>
     </div>
 </header>
@@ -137,9 +163,49 @@ $skills = [
 
 <footer class="site-footer">
     <div class="container">
-        <p>&copy; <?= date('Y') ?> <?= htmlspecialchars($name) ?></p>
+        <p>&copy; 2025 - <?= date('Y') ?> <?= htmlspecialchars($name) ?></p>
     </div>
 </footer>
+
+<script>
+// Theme toggle: respects system preference, persists in localStorage, and updates aria attributes
+(function() {
+    const root = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    const label = document.getElementById('theme-toggle-label');
+    const preferredDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    function applyTheme(theme) {
+        if (!btn) return;
+        if (theme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+            btn.setAttribute('aria-pressed', 'true');
+            if (label) label.textContent = 'Switch to light theme';
+        } else {
+            root.removeAttribute('data-theme');
+            btn.setAttribute('aria-pressed', 'false');
+            if (label) label.textContent = 'Switch to dark theme';
+        }
+    }
+
+    // Initialize
+    const stored = localStorage.getItem('theme');
+    if (stored === 'dark' || (stored === null && preferredDark)) {
+        applyTheme('dark');
+    } else {
+        applyTheme('light');
+    }
+
+    if (btn) {
+        btn.addEventListener('click', function() {
+            const isDark = root.getAttribute('data-theme') === 'dark';
+            const next = isDark ? 'light' : 'dark';
+            applyTheme(next);
+            try { localStorage.setItem('theme', next); } catch (e) { /* ignore if disabled */ }
+        });
+    }
+})();
+</script>
 
 </body>
 </html>
