@@ -1,14 +1,14 @@
 :root {
-    /* Colors (clear, limited palette for accessibility) */
-    --color-bg: #f7f8fa;         /* page background */
-    --color-surface: #ffffff;    /* cards, tiles */
-    --color-text: #0f1724;      /* primary text */
-    --color-muted: #5b6770;     /* secondary text */
-    --color-border: #e6e9ec;    /* subtle borders */
-    --color-accent: #2563eb;    /* single accent color (blue) */
-    --color-error: #dc2626;     /* error / warning */
+    --color-bg: #f7f8fa;
+    --color-surface: #ffffff;
+    --color-text: #0f1724;
+    --color-muted: #5b6770;
+    --color-border: #e6e9ec;
+    --color-accent: #2563eb;
+    --color-error: #dc2626;
 
-    /* Spacing scale */
+    --toggle-background: rgba(0,0,0,0.04);
+
     --space-1: 8px;
     --space-2: 12px;
     --space-3: 24px;
@@ -18,32 +18,29 @@
     --max-width: 1100px;
     --container-padding: 24px;
 
-    /* Type scale */
     --text-size-base: 16px;
     --leading: 1.5;
-    --h1: 2rem;   /* 32px */
-    --h2: 1.5rem; /* 24px */
-    --h3: 1.125rem; /* 18px */
-    --h4: 1rem;   /* 16px */
+    --h1: 2rem;
+    --h2: 1.5rem;
+    --h3: 1.125rem;
+    --h4: 1rem;
 }
 
-/* Dark theme tokens (applied when data-theme="dark" is present on <html>) */
 [data-theme="dark"] {
     --color-bg: #071020;
     --color-surface: #0b1220;
     --color-text: #e6eef8;
     --color-muted: #94a3b8;
     --color-border: rgba(255,255,255,0.04);
-    --color-accent: #06b6d4; /* cyan accent on dark */
+    --color-accent: #06b6d4;
+    --toggle-background: #0b172c;
 }
 
-/* Base reset and sensible defaults */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { height: 100%; }
 html { font-size: var(--text-size-base); }
 body {
     margin: 0;
-    /* Explicit font-family with generic fallback to satisfy linters */
     font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     line-height: var(--leading);
     color: var(--color-text);
@@ -61,14 +58,12 @@ img { max-width: 100%; height: auto; display: block; }
     padding: var(--container-padding);
 }
 
-/* Header / nav */
 .site-header { border-bottom: 1px solid var(--color-border); background: transparent; }
 .site-header .container { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
 .logo { font-size: 1.125rem; margin: 0; color: var(--color-text); }
 .main-nav a { color: var(--color-muted); text-decoration: none; margin-left: 12px; }
 .main-nav a:hover, .main-nav a:focus { color: var(--color-text); }
 
-/* Theme toggle (uses same .btn classes) */
 #theme-toggle {
     font-size: 0.9rem;
     padding: 6px 10px;
@@ -82,7 +77,8 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 #theme-toggle:hover, #theme-toggle:focus {
-    background: rgba(0,0,0,0.04);
+    background: var(--toggle-background);
+    cursor: pointer;
     color: var(--color-text);
 }
 
@@ -106,16 +102,13 @@ img { max-width: 100%; height: auto; display: block; }
 
 .sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
-/* Hero / Intro */
 .hero { padding: var(--space-4) 0; }
 .role { margin: 0 0 var(--space-1) 0; font-size: var(--h2); color: var(--color-accent); font-weight: 600; }
 .lead { margin: 0 0 var(--space-2) 0; color: var(--color-muted); max-width: 60ch; }
 
-/* Sections */
 .about, .projects, .skills, .contact { padding: var(--space-3) 0; border-top: 1px solid var(--color-border); }
 h3 { margin-top: 0; font-size: var(--h3); color: var(--color-text); }
 
-/* Projects grid */
 .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-2); margin-top: var(--space-2); }
 
 .project-card {
@@ -128,7 +121,6 @@ h3 { margin-top: 0; font-size: var(--h3); color: var(--color-text); }
 .project-card h4 { margin: 0 0 var(--space-1) 0; font-size: var(--h4); }
 .project-card p { margin: 0 0 var(--space-2) 0; color: var(--color-text); }
 
-/* Unified button styles */
 .btn {
     display: inline-block;
     padding: calc(var(--space-1)) calc(var(--space-2));
@@ -149,7 +141,6 @@ h3 { margin-top: 0; font-size: var(--h3); color: var(--color-text); }
     border: 1px solid var(--color-accent);
 }
 
-/* Skills */
 .skill-list { display: flex; flex-wrap: wrap; gap: var(--space-1); list-style: none; padding: 0; margin: var(--space-2) 0; }
 .skill-list li {
     background: transparent;
@@ -160,10 +151,8 @@ h3 { margin-top: 0; font-size: var(--h3); color: var(--color-text); }
     font-size: 0.95rem;
 }
 
-/* Footer */
 .site-footer { border-top: 1px solid var(--color-border); padding: var(--space-2) 0; margin-top: var(--space-3); text-align: center; color: var(--color-muted); background: transparent; }
 
-/* Accessibility: focus styles */
 :focus { outline: none; }
 :focus-visible {
     outline: 3px solid var(--color-accent);
@@ -171,16 +160,13 @@ h3 { margin-top: 0; font-size: var(--h3); color: var(--color-text); }
     border-radius: 6px;
 }
 
-/* Utilities */
 .stack { display: grid; gap: var(--space-2); }
 
-/* Responsive tweaks */
 @media (max-width: 700px) {
     .site-header .container { flex-direction: column; align-items: flex-start; }
     .main-nav { margin-top: var(--space-2); }
 }
 
-/* Motion preference */
 @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; animation: none !important; }
 }

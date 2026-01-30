@@ -39,7 +39,7 @@ $skills = [
                 'title' => 'PostgreSQL'
         ],
         [
-                'title' => 'C++'
+                'title' => 'TypeScript'
         ],
         [
                 'title' => 'JavaScript'
@@ -64,16 +64,14 @@ $skills = [
 <header class="site-header">
     <div class="container">
         <h1 class="logo"><?=$name?></h1>
-        <nav class="main-nav">
+        <nav class="main-nav" style="display: flex; justify-content: center; align-items: center;">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
-            <!-- Theme toggle button (subtle) -->
             <a id="theme-toggle" class="btn" aria-pressed="false" aria-label="Toggle color theme">
                 <span class="theme-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-                        <!-- Sun group -->
                         <g class="sun">
                             <circle cx="12" cy="12" r="4" fill="currentColor" />
                             <g stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
@@ -87,7 +85,6 @@ $skills = [
                                 <line x1="18.2" y1="5.8" x2="19.8" y2="4.2" />
                             </g>
                         </g>
-                        <!-- Moon group -->
                         <g class="moon" transform="translate(0,0)">
                             <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"/>
                         </g>
