@@ -1,0 +1,7 @@
+.project-hero { padding: 2rem 0; border-bottom: 1px solid rgba(0,0,0,.06); }
+.project-meta { display:flex; gap:1rem; flex-wrap:wrap; margin-top:1rem; }
+.project-meta a.btn { display:inline-flex; align-items:center; gap:.5rem; }
+.screenshots { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1rem; margin-top:1rem; }
+.screenshot { border:1px solid rgba(0,0,0,.06); height:160px; display:flex; align-items:center; justify-content:center; color:#666; font-size:0.95rem; }
+.feature-list { margin-top:1rem; }
+.back-link { margin-top:1.25rem; display:inline-block; }
