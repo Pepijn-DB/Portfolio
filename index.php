@@ -33,7 +33,8 @@ $projects = [
                 'JavaScript',
                 'HTML',
                 'CSS',
-                'MySQL'
+                'MySQL',
+                'Express'
         ]
     ]
 ];
@@ -61,6 +62,12 @@ $skills = [
                 'title' => 'JavaScript'
         ],
         [
+                'title' => 'NodeJS'
+        ],
+        [
+                'title' => 'Express'
+        ],
+        [
                 'title' => 'HTML'
         ],
         [
@@ -77,7 +84,7 @@ $skills = [
     <link rel="stylesheet" href="css/default.css">
     <style>
         .project-actions { display: inline-flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; margin: 0.4rem 0; }
-        .project-card .btn { padding: 0.35rem 0.6rem; font-size: 0.9rem; line-height: 1; display: inline-flex; align-items: center; gap: 0.4rem; }
+        .project-card .btn { padding: 0.35rem 0.6rem; font-size: 0.9rem; line-height: 1; display: inline-flex; align-items: center; gap: 0.4rem; height: 1rem; }
         .project-card .btn img { height: 1rem; width: auto; display: inline-block; }
         .project-card .skill-list { margin-top: 0.4rem; }
 
